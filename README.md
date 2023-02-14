@@ -15,7 +15,7 @@
 ## DB
 
 * connect to localhost <br> `psql -U userName`
-* create new database <br>`CREATE DATABASE map_with_ai WITH ENCODING 'UTF8;'`;
+* create new database <br>`CREATE DATABASE map_with_ai WITH ENCODING 'UTF8;`;
 * connect to the created db <br>`\c map_with_ai;`
 * create postgis extension <br>`CREATE EXTENSION postgis;`
 
@@ -32,4 +32,4 @@
 * exit database <br>`exit`
 
 ## Export data
-* export the _output_ table to shapefile format <br>`pgsql2shp -f output.shp -h localhost -u postgres -P _password_ map_with_ai romania`<br> where -P is your DB password
+* export the _output_ table to shapefile format <br>`pgsql2shp -f output.shp -h localhost -u postgres -P password map_with_ai romania`<br> where -P is your DB password
