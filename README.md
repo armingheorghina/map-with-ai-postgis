@@ -10,7 +10,8 @@
 ## Data
 
 * download country dataset from [map-with-ai](https://github.com/facebookmicrosites/Open-Mapping-At-Facebook/wiki/Available-Countries) and unzip _country_data_.gpkg.tar
-* convert _country_data_.gpkg.tar to _country_data_.shp using ogr2ogr <br>`ogr2ogr -f "ESRI Shapefile" country_data.shp country_data.gpkg` <br>where country_data is *your data*
+* convert _country_data_.gpkg.tar to _country_data_.shp using ogr2ogr <br>`ogr2ogr -f "ESRI Shapefile" country_data.shp country_data.gpkg` - where country_data is *your data*. <br>
+* **If you see this error:** <br>`Warning 1: 2GB file size limit reached for test.dbf. Going on, but might cause compatibility issues with third party software`<br> you will have to split your data into multiple shapefiles because of the 2GB .dbf limitation 
 
 ## DB
 
@@ -27,8 +28,8 @@
 ## Filter data
 
 * drop duplicated geometry column <br>`ALTER TABLE map_with_ai DROP COLUMN wkt;`
-* see number of cases grouped by highway tag column <br>`select highway_ta,count(highway_ta) from map_with_ai GROUP BY highway_ta ORDER BY count(highway_ta);`
-* create new table with major roads <br>`create table output AS (select * from map_with_ai WHERE highway_ta IN ('motorway_link', 'trunk_link', 'teriary_link', 'motorway', 'secondary_link', 'primary_link', 'trunk', 'primary', 'secondary', 'tertiary'));`
+* see number of cases grouped by highway tag column <br>`select highway_ta AS highway_tag,count(highway_ta) AS cases_count from map_with_ai GROUP BY highway_ta ORDER BY count(highway_ta);`
+* create new table with major roads <br>`create table output AS (select * from map_with_ai WHERE highway_ta IN ('motorway', 'motorway_link', 'trunk', 'trunk_link', 'primary', 'primary_link', 'secondary', 'secondary_link', 'tertiary', 'tertiary_link'));`
 * exit database <br>`exit;`
 
 ## Export data
