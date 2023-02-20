@@ -10,7 +10,7 @@
 ## Data
 
 * download country dataset from [map-with-ai](https://github.com/facebookmicrosites/Open-Mapping-At-Facebook/wiki/Available-Countries) and unzip _country_data_.gpkg.tar
-* convert _country_data_.gpkg.tar to _country_data_.shp using ogr2ogr <br>`ogr2ogr -f "ESRI Shapefile" country_data.shp country_data.gpkg` - where country_data is *your data*. <br>
+* convert _country_data_.gpkg to _country_data_.shp using ogr2ogr <br>`ogr2ogr -f "ESRI Shapefile" country_data.shp country_data.gpkg` - where country_data is *your data*. <br>
 * **If you see this error:** <br>`Warning 1: 2GB file size limit reached for test.dbf. Going on, but might cause compatibility issues with third party software`<br> you will have to split your data into multiple shapefiles because of the 2GB .dbf limitation 
 
 ## DB
@@ -33,4 +33,4 @@
 * exit database <br>`exit;`
 
 ## Export data
-* export the _output_ table to shapefile format <br>`pgsql2shp -f output.shp -h localhost -u postgres -P password map_with_ai romania`<br> where -P is your DB password
+* export the _output_ table to shapefile format <br>`pgsql2shp -f output.shp -h localhost -u postgres -P password map_with_ai output`<br> where -P is your DB password
